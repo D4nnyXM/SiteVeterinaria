@@ -1,5 +1,7 @@
 import "./Formulario.css";
 import { useState } from "react";
+import { collection, addDoc } from "firebase/firestore"; 
+import db from "../database/firebaseConfig";
 
 function Formulario({ campos }) {
   const [dados, setDados] = useState({});
@@ -10,9 +12,12 @@ function Formulario({ campos }) {
     setDados({ ...dados, [chave]: valor });
   };
   //evento = e = submit
-  const salvarDados = (e) => {
+  const salvarDados = async (e) => {
     e.preventDefault(); //prevenindo o evento padrão
     console.log(dados);
+    const docRef = await addDoc(collection(db, "comentarios"),dados);
+
+
   };
 
   return (
@@ -30,9 +35,10 @@ function Formulario({ campos }) {
           </div>
         );
       })}
-      <button type="submit"> Enviar informação</button>
+                  
+      <button type="submit"> Enviar informação</button> 
     </form>
   );
-} //Fim do Componente Formulario
+} //Fim do Componente Formulario 
 
 export default Formulario;

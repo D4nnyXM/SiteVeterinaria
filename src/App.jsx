@@ -7,7 +7,13 @@ import Titulo from "./components/Titulo";
 
 import Formulario from "./components/Formulario";
 
+import { collection, getDocs } from "firebase/firestore";
+import db from "./database/firebaseConfig";
+
 import "./App.css";
+
+
+
 
 const App = () => {
   const campos = [
@@ -45,6 +51,18 @@ const App = () => {
     },
   ];
 
+  //Busca todos os documentos da colecao 
+  const lerBanco = async() => {  
+    //Ler dados do banco de dados   para cada item dentro do Array vamos executar um console.log /* comentarios = [ <<-- colletion { nome: ana, email: tata@gma}]
+    
+     const comentarios = await getDocs(collection(db, "comentarios"));
+
+    comentarios.forEach( (documento)=> {
+      console.log(documento.data());
+    });
+
+  };
+
   return (
     <div>
       <Cabecalho />
@@ -67,6 +85,7 @@ const App = () => {
         <Titulo texto="Contato" />
 
         <Formulario campos={campos} />
+        <button onClick={lerBanco}> Ler dados do banco </button>
       </Secao>
     </div>
   );
