@@ -25,3 +25,8 @@
   font-size: 30px;
   color: tomato;
 }
+
+.servicos{
+  display: flex;
+  gap: 11px
+}
