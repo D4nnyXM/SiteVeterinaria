@@ -28,5 +28,7 @@
 
 .servicos{
   display: flex;
-  gap: 11px
+  gap: 11px;
+  padding: 1px;
+  
 }
