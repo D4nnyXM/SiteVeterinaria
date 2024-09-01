@@ -19,9 +19,9 @@ const firebaseConfig = {
 };
 
 // Initialize Firebase
-// aqui ja esta para acessar o anco de dados
+// aqui ja esta para acessar o Banco de dados
 const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
 
 export default db;
-// quando mais de um obejto  export { app, botao} sem o default
+// quando mais de um objeto  => export { app, botao} <= sem o default
